@@ -51,8 +51,8 @@ struct CardView: View {
                                 thisCard.turnOver() // turn them back upside down
                             }
                         }
+                        checkForMatch() // After we flipped the cards back over, we'll check for a match. If they are a match, when the view rests, they will stay face up. We only check after the second card has been chosen.
                     }
-                    checkForMatch() // After we flipped the cards back over, we'll check for a match. If they are a match, when the view rests, they will stay face up.
                 }
             
         }
@@ -65,6 +65,7 @@ struct CardView: View {
             MatchedCards.append(UserChoices[0]) // add the first UserChoice card to our matchedCards array
             MatchedCards.append(UserChoices[1]) // add the second UserChoice car to our matchedCards array
         }
+        
         UserChoices.removeAll() // remove the two choices that were in our UserChoices array to prepare for choosing again.
     }
     
