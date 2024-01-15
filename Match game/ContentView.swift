@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private var fourColumGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    private var fourColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
-    private var sixColumGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    private var sixColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     @State var cards = createCardList().shuffled()
     @State var MatchedCards = [Card]()
@@ -30,7 +30,7 @@ struct ContentView: View {
                     Text("Sports Memory Game")
                         .font(.largeTitle)
                     
-                    LazyVGrid(columns: fourColumGrid, spacing: 10) {
+                    LazyVGrid(columns: fourColumnGrid, spacing: 10) {
                         ForEach(cards) {card in
                             CardView(card: card,
                                      width: Int(geo.size.width/4 - 10),
@@ -38,7 +38,19 @@ struct ContentView: View {
                                      UserChoices: $UserChoices)
                         } // end ForEach
                     } // end LazyVGrid
-                } // end VStack
+                    
+                    VStack{
+                        Text("Match these cards to win:")
+                        LazyVGrid(columns: sixColumnGrid, spacing: 5) {
+                            ForEach (cardValues, id:\.self){cardValue in
+                                if !MatchedCards.contains(where: {$0.text == cardValue}){
+                                    Text(cardValue)
+                                        .font(.system(size:30))
+                                } // end if
+                            } // end ForEach
+                        } // end LazyVGrid sixColumns
+                    } // end VStack for items to match
+                } // end VStack for the bigger contentView
             } // end geometryReader
         } // end ZStack
     } // end body View
