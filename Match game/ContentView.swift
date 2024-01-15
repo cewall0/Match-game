@@ -21,8 +21,8 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             
-            Image("background")
-                .resizable()
+            Color(.sRGB, red: 0.922, green: 0.918, blue: 0.773)
+                .opacity(0.5)
                 .ignoresSafeArea()
             
             GeometryReader{geo in
