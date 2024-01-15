@@ -42,7 +42,7 @@ struct ContentView: View {
                     VStack{
                         Text("Match these cards to win:")
                         LazyVGrid(columns: sixColumnGrid, spacing: 5) {
-                            ForEach (cardValues, id:\.self){cardValue in // for each card with a unique identifier in the cardValues array...
+                            ForEach (cardValues, id:\.self){cardValue in // for each card with a unique identifier in the cardValues array of sports String icons...  the identifier is the string itself since these are all unique values. If not, this is where I would need to make a struct (labeled Identifiable to let the rest of the code know it has an identifiable uuid in it, and use an id=UUID() in the struct and make id:\.id
                                 if !MatchedCards.contains(where: {$0.text == cardValue}){
                                     Text(cardValue)
                                         .font(.system(size:30))

@@ -40,10 +40,10 @@ struct CardView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(red: 0.18, green: 0.32, blue: 0.46), lineWidth: 3))
                 .onTapGesture { // if the back of a card it tapped
-                    if UserChoices.count == 0 { // if this is the first card the user is overturning of a "round"
+                    if UserChoices.count == 0 { // if this is the first card the user is overturning of a "round" - i.e. there are 0 choices in the UserChoices array...
                         card.turnOver() // then we turn over the card and show its contents.
                         UserChoices.append(card) // adding card to our UserChoices array to keep track of the first card shown in this "round"
-                    } else if UserChoices.count == 1 { //One card for the round has already been turned over, so we are choosing our second card.
+                    } else if UserChoices.count == 1 { //One card for the round has already been turned over, so we are choosing our second card - i.e. there is one choice in the UserChoices array...
                         card.turnOver() // then we turn over the card.
                         UserChoices.append(card)// adding card to our UserChoices array to keep track of the second card shown in this "round"
                         withAnimation(Animation.linear.delay(1)){ // wait one second then flip cards back over.
@@ -52,10 +52,9 @@ struct CardView: View {
                             }
                         }
                         checkForMatch() // After we flipped the cards back over, we'll check for a match. If they are a match, when the view rests, they will stay face up. We only check after the second card has been chosen.
-                    }
-                }
-            
-        }
+                    } // end else if
+                } // end onTapGesture
+        } // end else
     }// end body view
     
     func checkForMatch(){
