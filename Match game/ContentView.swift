@@ -42,7 +42,7 @@ struct ContentView: View {
                     VStack{
                         Text("Match these cards to win:")
                         LazyVGrid(columns: sixColumnGrid, spacing: 5) {
-                            ForEach (cardValues, id:\.self){cardValue in
+                            ForEach (cardValues, id:\.self){cardValue in // for each card with a unique identifier in the cardValues array...
                                 if !MatchedCards.contains(where: {$0.text == cardValue}){
                                     Text(cardValue)
                                         .font(.system(size:30))
